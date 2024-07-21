@@ -4,6 +4,11 @@
 
 モジュール指向で p5.js プロジェクトを作成するためのテンプレートです。
 
+## 機能
+
+- TypeScript
+- Hot Module Replacement（HMR）サポート
+
 ## モジュールについて
 
 `./modules/*.module.ts` でモジュールを定義できます。

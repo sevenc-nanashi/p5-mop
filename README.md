@@ -4,6 +4,11 @@
 
 This is a template for creating p5.js projects in a module-oriented way.
 
+## Features
+
+- TypeScript
+- Hot Module Replacement (HMR) support
+
 ## About Modules
 
 You can define module in `./modules/*.module.ts`.
