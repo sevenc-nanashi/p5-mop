@@ -1,23 +1,6 @@
 import { defineConfig, Plugin } from "vite";
-import { relative } from "node:path";
+import { relative, sep } from "node:path";
 import { readFile, readdir, writeFile } from "node:fs/promises";
-
-const dedent = (base: string) => {
-  const leftPadding = base.split("\n").reduce((acc, line) => {
-    const spaceMatch = line.match(/^\s+/);
-    if (!spaceMatch) {
-      return acc;
-    }
-
-    const leadingWhitespace = spaceMatch[0].length;
-    return Math.min(acc, leadingWhitespace);
-  }, Infinity);
-
-  return base
-    .split("\n")
-    .map((line) => line.slice(leftPadding))
-    .join("\n");
-};
 
 const projectRoot = import.meta.dirname;
 
@@ -34,7 +17,7 @@ const createMopPlugin = (): Plugin => {
     name: "mop-plugin",
     enforce: "pre",
     async load(id) {
-      const relativePath = relative(projectRoot, id);
+      const relativePath = relative(projectRoot, id).replaceAll(sep, "/");
       if (relativePath === "src/main.ts") {
         const modules = await getModules();
         const content = await readFile(id, "utf-8");
