@@ -24,13 +24,13 @@
 ### `State`
 
 `State` はモジュール間で共有される変数です。
-`./modules/base.ts` で `State` をオーバーライドしてください。
+`/src/modules/base.ts` で `State` をオーバーライドしてください。
 モジュールの `setup` メソッドで初期化するのを推奨します。
 
 ### `Modules`
 
 他のモジュールのインスタンスを取得するには `modules` を使用できます。
-`modules` の型は `./modules/modules.generated.ts` で自動的に更新されます。このファイルを手動で編集しないでください。
+モジュールを追加した時は `/src/modules/base.ts` も更新してください。
 
 ## ライセンス
 
