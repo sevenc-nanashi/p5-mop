@@ -1,41 +1,35 @@
 import p5 from "p5";
-import { Module, Modules, State } from "./modules/base.ts";
+import { Modules, State } from "./modules/base.ts";
+import BackgroundModule from "./modules/background.module.ts";
+import CircleModule from "./modules/circle.module.ts";
 
-const modules = import.meta.glob("./modules/*.module.ts");
-
-const moduleInstances: Modules = {} as unknown as Modules;
 const state = {} as unknown as State;
 
-const p5Instance = new p5((p: p5) => {
-  p.preload = () => {
-    // @ts-expect-error
-    p._incrementPreload();
-    (async () => {
-      for (const module of Object.values(modules)) {
-        const moduleJs = (await module()) as { default: typeof Module };
-        // @ts-expect-error
-        const moduleInstance = new moduleJs.default(p5Instance);
-
-        // @ts-expect-error
-        moduleInstances[moduleJs.default.name] = moduleInstance;
-      }
-      // @ts-expect-error
-      p._decrementPreload();
-    })();
+new p5((p: p5) => {
+  const modules: Modules = {
+    BackgroundModule: new BackgroundModule(p),
+    CircleModule: new CircleModule(p),
   };
 
   p.setup = () => {
-    for (const module of Object.values(moduleInstances)) {
-      (module as Module).setup(moduleInstances, state);
+    for (const module of Object.values(modules)) {
+      module.setup(modules, state);
+      module.setupExecuted = true;
     }
   };
 
   let prevEndedSuccessfully = true;
   p.draw = () => {
     try {
-      for (const module of Object.values(moduleInstances)) {
+      for (const module of Object.values(modules)) {
+        if (!module.setupExecuted) {
+          module.setup(modules, state);
+          module.setupExecuted = true;
+        }
+      }
+      for (const module of Object.values(modules)) {
         p.push();
-        module.draw(moduleInstances, state);
+        module.draw(modules, state);
         p.pop();
       }
       prevEndedSuccessfully = true;
@@ -54,30 +48,3 @@ const p5Instance = new p5((p: p5) => {
     }
   };
 });
-
-if (import.meta.hot) {
-  import.meta.hot.accept(
-    [
-      /* mop-modules */
-    ] as readonly string[],
-    (modules: (unknown | undefined)[]) => {
-      for (const module of modules) {
-        if (module) {
-          (async () => {
-            const moduleJs = module as { default: typeof Module };
-
-            // @ts-expect-error
-            const moduleInstance = new moduleJs.default(p5Instance);
-
-            // @ts-expect-error
-            moduleInstances[moduleJs.default.name] = moduleInstance;
-
-            moduleInstance.setup(moduleInstances, state);
-
-            console.info(`[p5-mop:hmr] Reloaded module: ${moduleJs.default.name}`);
-          })();
-        }
-      }
-    },
-  );
-}

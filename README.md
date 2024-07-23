@@ -7,7 +7,7 @@ This is a template for creating p5.js projects in a module-oriented way.
 ## Features
 
 - TypeScript
-- Hot Module Replacement (HMR) support
+- Hot Module Replacement (HMR) support powered by [vite-plugin-hmrify](https://github.com/sevenc-nanashi/vite-plugin-hmrify)
 
 ## About Modules
 

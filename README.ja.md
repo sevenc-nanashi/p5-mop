@@ -7,7 +7,7 @@
 ## 機能
 
 - TypeScript
-- Hot Module Replacement（HMR）サポート
+- [vite-plugin-hmrify](https://github.com/sevenc-nanashi/vite-plugin-hmrify) による Hot Module Replacement（HMR）サポート
 
 ## モジュールについて
 
