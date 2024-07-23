@@ -17,7 +17,7 @@ You can use `this.p` to access p5 instance.
 Each module should extend abstract class `Module` (defined in base.ts), and implement the `setup` and `draw` methods.
 The constructor corresponds to p5.js's `preload` function.
 
-Please refer `./modules/circle.module.ts` for an example.
+Please refer `/src/modules/circle.module.ts` for an example.
 
 ## How to Use
 

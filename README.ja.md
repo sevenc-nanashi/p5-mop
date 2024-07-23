@@ -17,7 +17,7 @@
 各モジュールは `base.ts` の抽象クラス `Module` を拡張し、`setup` と `draw` メソッドを実装する必要があります。
 コンストラクタは p5.js の `preload` 関数に対応します。
 
-例については `./modules/circle.module.ts` を参照してください。
+例については `/src/modules/circle.module.ts` を参照してください。
 
 ## 使い方
 
