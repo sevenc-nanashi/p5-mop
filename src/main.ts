@@ -1,14 +1,14 @@
 import p5 from "p5";
 import { Modules, State } from "./modules/base.ts";
 import BackgroundModule from "./modules/background.module.ts";
-import CircleModule from "./modules/circle.module.ts";
+import ObjectsModule from "./modules/objects.module.ts";
 
 const state = {} as unknown as State;
 
 new p5((p: p5) => {
   const modules: Modules = {
     BackgroundModule: new BackgroundModule(p),
-    CircleModule: new CircleModule(p),
+    ObjectsModule: new ObjectsModule(p),
   };
 
   p.setup = () => {

@@ -1,6 +1,6 @@
 import p5 from "p5";
 import BackgroundModule from "./background.module.ts";
-import CircleModule from "./circle.module.ts";
+import ObjectsModule from "./objects.module.ts";
 
 export type State = {};
 
@@ -15,5 +15,5 @@ export abstract class Module {
 
 export type Modules = {
   BackgroundModule: BackgroundModule;
-  CircleModule: CircleModule;
+  ObjectsModule: ObjectsModule;
 };

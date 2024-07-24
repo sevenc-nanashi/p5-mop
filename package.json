@@ -13,7 +13,7 @@
     "@types/p5": "^1.7.6",
     "typescript": "^5.5.4",
     "vite": "^5.3.4",
-    "vite-plugin-hmrify": "https://pkg.pr.new/sevenc-nanashi/vite-plugin-hmrify@c532dc1"
+    "vite-plugin-hmrify": "https://pkg.pr.new/sevenc-nanashi/vite-plugin-hmrify@114bbfe"
   },
   "dependencies": {
     "esbuild": "^0.23.0",
