@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/node": "^20.14.11",
+    "@types/node": "^20.14.12",
     "@types/p5": "^1.7.6",
-    "typescript": "^5.2.2",
+    "typescript": "^5.5.4",
     "vite": "^5.3.4",
-    "vite-plugin-hmrify": "https://pkg.pr.new/sevenc-nanashi/vite-plugin-hmrify@011f8f6"
+    "vite-plugin-hmrify": "https://pkg.pr.new/sevenc-nanashi/vite-plugin-hmrify@c532dc1"
   },
   "dependencies": {
     "esbuild": "^0.23.0",

@@ -18,6 +18,6 @@ export default class CircleModule extends Module {
 
   draw(modules: Modules, state: State): void {
     this.p.circle(50, 50, 80);
-    this.p.image(this.image, 100, 0);
+    this.p.image(this.image, 150, 0);
   }
 }

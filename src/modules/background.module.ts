@@ -7,6 +7,6 @@ export default class BackgroundModule extends Module {
   }
 
   draw(modules: Modules, state: State): void {
-    this.p.background(0);
+    this.p.background(128);
   }
 }
